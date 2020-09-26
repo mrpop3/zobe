@@ -1,3 +1,5 @@
+/*unminified version*/
+
 /*	SWFObject v2.2 <http://code.google.com/p/swfobject/> 
 	iss released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
