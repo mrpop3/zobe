@@ -1,0 +1,844 @@
+
+<!doctype html>
+<html>
+  
+<!-- Mirrored from www.zobe.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Apr 2018 21:20:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta content='Come join our fun and easy to use chat rooms.  No signup necessary.' name='description' />
+    <meta content='chat, chat rooms, free chat' name='keywords' />
+    <meta content='IE=edge;chrome=1' http-equiv='X-UA-Compatible' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta content='yes' name='apple-mobile-web-app-capable' />
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta content='Zobe - Free Chat.' property='og:title' />
+    <meta content='website' property='og:type' />
+    <meta content='http://zobe.com' property='og:url' />
+    <meta content='http://zobe.com/images/ogp.png' property='og:image' />
+    <meta content='image/png' property='og:image:type' />
+    <meta content='400' property='og:image:width' />
+    <meta content='300' property='og:image:height' />
+    <meta content='Meet people, create chat rooms, make new friends.' property='og:description' />
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Lato:400,700,900|Droid+Serif:700italic' rel='stylesheet' type='text/css'>
+    <title>Free Chat - Zobe.com</title>
+    <link type="text/css" media="screen" rel="stylesheet" href="stylesheets/all.fcd0275b2c679844ec345940c0c9a791e94e88e6.css" />
+
+    <script type="text/javascript">
+
+function genID(length){
+  var charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var i;
+  var result = "";
+  if(window.crypto && window.crypto.getRandomValues){
+    values = new Uint32Array(length);
+    window.crypto.getRandomValues(values);
+    for(i=0; i<length; i++){
+      result += charset[values[i] % charset.length];
+    }
+    return result;
+  } else {
+    for(i=0; i<length; i++){
+      result += charset[Math.floor(Math.random()*charset.length)];
+    }
+    return result;
+  }
+}
+function getCookieValue(a) {
+    var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b ? b.pop() : '';
+}
+function createCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+if(!getCookieValue("zobe_id")) {
+  console.log("creating zobe id...");
+  createCookie("zobe_id",genID(10),365);
+}
+    </script>
+
+    <script type="text/javascript" src="../ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/all.9e5631b7813305f2a531abdf6edcc0daef423bda.js"></script>
+  </head>
+
+  <body class="">
+    <div id='main'>
+  
+  <div id='login'>
+    <label class='container'>
+      <div class='login logo'>MakeChat.com</div>
+      <div class='notification'>Choose A User Name</div>
+      <div class='input username'>
+        <input class='input_text' maxChars='16' placeholder='Enter your name' required='required' type='text' />
+      </div>
+      <div class='age hidden'>
+        I'm
+        <a class='action age13' href='#'>13-17</a>
+        <a class='action age18' href='#'>18-23</a>
+        <a class='action age24' href='#'>24+</a>
+        years old
+      </div>
+      <div class='gender hidden'>
+        I'm a
+        <a class='action female' href='#'>Girl</a>
+        <a class='action male' href='#'>Guy</a>
+      </div>
+      <a class='login button disabled' href='#'>
+        <span class='label'>Join Room</span>
+      </a>
+      <div class='social'>
+        <!-- = partial '_partials/facebook' -->
+      </div>
+    </label>
+  </div>
+  <div class='hidden' id='yt-overlay'>
+  <div class='container'>
+    <div class='video'></div>
+    <div class='header-group'>
+      <h2></h2>
+      <a class='close button' href='javascript:void(0)'></a>
+      <div class='description'></div>
+    </div>
+  </div>
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden' id='confirm-modal'>
+  <h2 class='title'>Confirm Action</h2>
+  <p class='message'>...</p>
+  <input class='confirm button' type='button' value='Confirm' />
+  <input class='cancel button' type='button' value='Cancel' />
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden primary-modal' id='karmaboost-window'>
+  <h2 class='title'></h2>
+  <a class='back close button'></a>
+  <div class='frame'></div>
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden primary-modal' id='tokengrab-window'>
+  <h2 class='title'>Share YouTube for instant Tokens!</h2>
+  <a class='back close button'></a>
+  <div class='frame'>
+    <h4>Watch these videos</h4>
+    <h4 class='right-col'>Enter codewords</h4>
+    <ul class='youtube-links'>
+      <li>
+        <i class='icon'></i>
+        <a class='text' href='http://google.com/' target='_blank'>Watch Video Number 1</a>
+        <input class='right-col input' type='text' />
+      </li>
+      <li>
+        <i class='icon'></i>
+        <a class='text' href='http://google.com/' target='_blank'>Watch Video Number 2</a>
+        <input class='right-col input' type='text' />
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden primary-modal' id='karmareferral-window'>
+  <h2 class='title'>Rerferral Links</h2>
+  <a class='back close button'></a>
+  <div class='frame'>
+    <p class='instructions'></p>
+    <i class='icon-link'></i>
+    <input class='input referral-code' type='text' />
+  </div>
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden' id='m-edit'>
+  <h2>Edit Room</h2>
+  <label class='room_name'>
+    <span>Room Name</span>
+    <input type='text' />
+  </label>
+  <label class='room_url'>
+    <span>Room URL</span>
+    <input type='text' />
+  </label>
+  <div class='mod button'>Update</div>
+  <div class='close button'></div>
+</div>
+<!-- / -------------------------------------- -->
+<div id='invite-user'>
+  <div class='modal hidden'>
+    <h2>Invite User</h2>
+    <div class='message'></div>
+    <div class='close button'></div>
+    <ul class='rooms'></ul>
+    <div class='invite button'>Invite</div>
+    <div class='cancel button'>Cancel</div>
+    <div class='ok button'>Close</div>
+  </div>
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden' id='karmaboost'>
+  <h2>Karma Boost</h2>
+  <p class='instructions'>Complete the tasks below for instant karma boost.</p>
+  <div class='rewards'></div>
+  <div class='close button'></div>
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden' id='faq'>
+  <h2>Frequently Asked Questions</h2>
+  <div class='close button'></div>
+  <div class='content'></div>
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden' id='help'>
+  <h2>Help Section</h2>
+  <div class='close button'></div>
+  <div class='content'></div>
+</div>
+<!-- / -------------------------------------- -->
+<div class='hidden' id='settings'>
+  <h2 class='hidden'>General Settings</h2>
+  <label class='theme'>
+    <span class='title'>Dark Theme</span>
+    <input type='checkbox' />
+    <span class='checkbox'>
+      <span class='check button'></span>
+    </span>
+  </label>
+  <label class='chat size'>
+    <span class='title'>Compact Texts</span>
+    <input type='checkbox' />
+    <span class='checkbox'>
+      <span class='check button'></span>
+    </span>
+  </label>
+  <h2>Sound Notification</h2>
+  <label class='sfx mention'>
+    <span class='title'>When my name is mentioned</span>
+    <input type='checkbox' />
+    <span class='checkbox'>
+      <span class='check button'></span>
+    </span>
+  </label>
+  <label class='sfx enter'>
+    <span class='title'>Someone enters/leaves</span>
+    <input type='checkbox' />
+    <span class='checkbox'>
+      <span class='check button'></span>
+    </span>
+  </label>
+  <label class='sfx message'>
+    <span class='title'>Someone enters a message</span>
+    <input type='checkbox' />
+    <span class='checkbox'>
+      <span class='check button'></span>
+    </span>
+  </label>
+  <label class='sfx all'>
+    <span class='title'>Mute all sounds</span>
+    <input type='checkbox' />
+    <span class='checkbox'>
+      <span class='check button'></span>
+    </span>
+  </label>
+  <div class='close button'></div>
+</div>
+<div class='hidden' id='timedout'>
+  <div class='container'>
+    <h2>Connection Timed out!</h2>
+    <p>Uh-oh! Seems like your connection dropped. <br/> Log-in back again by clicking the reload button.</p>
+    <div class='reload button'>
+      Reload
+      <div class='icon'></div>
+    </div>
+  </div>
+</div>
+  <div class='hidden' id='header'>
+    <div class='logo'>Zobe.com</div>
+    <div class='create button'>Create Room</div>
+    <div class='social buttons'>
+      <div class='facebook'>
+        <div class='fb-like' data-href='http://zobe.com/' data-layout='button_count' data-send='false' data-show-faces='false' data-width='450'></div>
+      </div>
+      <div class='plus-one'>
+        <g:plusone callback='plusone' href='https://plus.google.com/112842889102536860619'></g:plusone>
+      </div>
+    </div>
+    <ul class='nav'>
+      <li class='name-availability'>
+        <i class='icon'></i>
+        <span class='text'></span>
+      </li>
+      <li class='user-name' id='userName'>
+        <i class='icon'></i>
+        <span class='text'>...</span>
+        <input type='text' />
+      </li>
+      <li class='tokens'>
+        <i class='icon'></i>
+        <span class='text'>0</span>
+      </li>
+      <li class='karma'>
+        <i class='icon'></i>
+        <span class='text'>0</span>
+      </li>
+      <li class='settings button'>
+        <i class='icon'></i>
+        <span class='text'>Settings</span>
+      </li>
+      <li class='help button'>
+        <i class='icon'>
+          <span class='text'>Help</span>
+        </i>
+      </li>
+      <li class='faq button'>
+        <i class='icon'></i>
+        <span class='text'>FAQ</span>
+      </li>
+    </ul>
+  </div>
+  <div class='main container hidden' id='main-container'>
+  <div class='news button'><a target="_blank" href="https://plus.google.com/112842889102536860619/posts">News and Tips</a></div>
+  <div class='public container'>
+    <div id='publicChat'>
+      <div class='tool-tip'>
+        <div class='info'>
+          <h4 class='username'>
+            <i class='icon-user'></i>
+            <span class='text'></span>
+          </h4>
+          <span class='gender'></span>
+          <span class='age'></span>
+          <span class='karma'>
+            <i class='icon'></i>
+            <b class='text'></b>
+          </span>
+        </div>
+        <span class='nib top'></span>
+        <span class='nib bottom'></span>
+      </div>
+      <div class='chatrooms'></div>
+    </div>
+    <div id='subscribedRooms'>
+      <div class='left button hidden'>
+        <div class='icon'></div>
+      </div>
+      <div class='right button hidden'>
+        <div class='icon'>
+          <!-- /... -->
+        </div>
+      </div>
+      <div class='wrapper'>
+        <ul class='list'>
+          <!-- / .. -->
+        </ul>
+        <div class='add button'>
+          <!-- / .. -->
+        </div>
+      </div>
+    </div>
+    <div class='hidden' id='availableRooms'>
+      <h2>Available Rooms</h2>
+      <div class='rooms nano'>
+        <ul class='content'></ul>
+      </div>
+      <div class='close button'></div>
+    </div>
+  </div>
+  <div class='private container'>
+    <div class='hidden' id='privatechat-notification'>
+      <ul></ul>
+      <a class='close button'></a>
+    </div>
+    <div id='privateChat'>
+      <ul id='user-tab-nav'>
+        <li class='activity'>
+          <i class='icon'></i>
+          <span class='text'>
+            Activity
+          </span>
+          <b class='unread'></b>
+        </li>
+        <li class='messages'>
+          <i class='icon'></i>
+          <span class='text'>
+            Messages
+          </span>
+          <b class='unread'></b>
+        </li>
+        <li class='karma'>
+          <i class='icon'></i>
+          <span class='text'>
+            Karma Boost
+          </span>
+          <b class='unread'></b>
+        </li>
+        <li class='tokens'>
+          <i class='icon'></i>
+          <span class='text'>
+            Token Grab
+          </span>
+          <b class='unread'></b>
+        </li>
+      </ul>
+      <div class='log-container'>
+        <div class='section' id='user-tab-activity'>
+          <div class='nano'>
+            <div class='content'>
+              <h2>Recent Activity</h2>
+              <ul class='activity'></ul>
+            </div>
+          </div>
+        </div>
+        <div class='section' id='user-tab-messages'>
+          <div class='karma-threshold'>
+            <h4>Karma Threshold</h4>
+            <select class='threshold-list'></select>
+          </div>
+          <div class='users nano'>
+            <ul class='content'>
+              <li class='tip'>
+                Tip: Select conversations by pressing <b>[</b> to move up and <b>]</b> to move down.
+                Hit <b>Enter</b> to open the chat and press <b>ESC</b> to go back.
+                Press <b>Backspace</b> while a conversation is selected to remove it.
+                <br/><br/>
+                To switch between group and private chat, press <b>Tab</b> while the input box is empty.
+                <br/><br/>
+                To open a new private chat in the group chat, type: /pm (tagged-name)
+              </li>
+            </ul>
+          </div>
+          <div class='privatechats'>
+            <div class='back button'>
+              <i class='icon back'></i>
+              Back
+              <span class='unread'></span>
+            </div>
+          </div>
+        </div>
+        <div class='section' id='user-tab-karma'>
+          <div class='nano'>
+            <div class='content'>
+              <h2>Karma Boost</h2>
+              <div class='instructions'>Complete the tasks below for instant karma boost.</div>
+              <ul class='offers'></ul>
+            </div>
+          </div>
+        </div>
+        <div class='section' id='user-tab-tokens'>
+          <div class='nano'>
+            <div class='content'>
+              <h2>Token Grab</h2>
+              <div class='instructions'>Want instant tokens? Complete these items.</div>
+              <ul class='offers'></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id='aux-content'>
+  <section id='testimonials'>
+    <h2>The remark trailer park</h2>
+        <article>
+      <h3>Michael</h3>
+      <p>
+        <span class='photo' data-src='thumbs/565849c4188936f46a0418d0002b95e81fb344df.thumb.jpg'></span>
+        <span>this chat room is wild, the people are funny and you can always meet someone who is wiling to say hey or jab ur funni bone, they get pretty HYPE too, i hadnt been on in a while, but my first thought when i was bored was i gotta check this place out again</span>
+      </p>
+    </article>
+        <article>
+      <h3>Ian</h3>
+      <p>
+        <span class='photo' data-src='thumbs/d52e918804db040226e6bc89b8e05a39d708a8df.thumb.jpg'></span>
+        <span>Teen Chat rocks.  I find a lot of people here and it&#39;s great on a boring day!  Go Teen Chat rock on!! It&#39;s amazing how many people i&#39;ve connected with through this system.  Keep up the great work!</span>
+      </p>
+    </article>
+        <article>
+      <h3>Randee</h3>
+      <p>
+        <span class='photo' data-src='thumbs/5b50f759ee857fcbf4df67effd59ec707d414384.thumb.jpg'></span>
+        <span>I don&#39;t have a favorite chat room. I like them all, I&#39;ve met a lot of my good friends through this network. It&#39;s awesome, I can&#39;t choose a favorite room. Every chat room that I have gone to has been hilarious, fun, and sometimes kind of stupid. I just like everything about TeenChat.com. Awesome website. It&#39;s totally addictive! I&#39;m on here all the time!</span>
+      </p>
+    </article>
+        <article>
+      <h3>Arielle</h3>
+      <p>
+        <span class='photo' data-src='thumbs/be7c389dbd75cb152384c2261c95b08539cff346.thumb.jpg'></span>
+        <span>Man this site kicks major ass, I have been coming here for a year now and i have already found the most wonderful guy and met tons of new friends!!!! Its amazing!!!!</span>
+      </p>
+    </article>
+        <article>
+      <h3>Harley</h3>
+      <p>
+        <span class='photo' data-src='thumbs/12ca3e745a5f375caf69b224bdd01fcd80a2cf73.thumb.jpg'></span>
+        <span>Teen chat is brilliant! i have been using it for about 4 years now, and i love it.theres so many new people to meet out there in the world,so why not bring them all to teen chat?!ive made friends in countries i hadn&#39;t even heard of,theres no resentment in any of the rooms,everyone is made to feel welcome!
+Teen chat is amazing and i think Dan needs an award for doing something that brings together so many people from different cultures, backgrounds and walks of life.
+You rock dude!</span>
+      </p>
+    </article>
+        <article>
+      <h3>Dr Lossever</h3>
+      <p>
+        <span class='photo' data-src='thumbs/4ad3367afa18596b3736208ef195678fddf99bd8.thumb.jpg'></span>
+        <span>just a simple person love to be at affectionate emotional deep mood and like to write, also like to make a new relationships and value my friends in unlimited way and hate the stupid peoples.  </span>
+      </p>
+    </article>
+        <article>
+      <h3>x Lexy x</h3>
+      <p>
+        <span class='photo' data-src='thumbs/16a76a25275bcd0055e898fb108be162fa13c702.thumb.jpg'></span>
+        <span>The reason I keep coming back to teen chat is this: There&#39;s always someone out there just like you. That and...everything else :) Don&#39;t even try searching for a better chat, because you&#39;re already there. </span>
+      </p>
+    </article>
+        <article>
+      <h3>Heidi</h3>
+      <p>
+        <span class='photo' data-src='thumbs/8d4513b4dad5fd64322ff9ef21fb0b4f7956bdd5.thumb.jpg'></span>
+        <span>I love this chat, whether I&#39;m hyper, depressed, or bored I can always find someone to talk to :)</span>
+      </p>
+    </article>
+        <article>
+      <h3>Scott</h3>
+      <p>
+        <span class='photo' data-src='thumbs/23189ff0285ea7473319722767a56d83a18ee75e.thumb.jpg'></span>
+        <span>Teen chat is awesome, i used to be on here everyday when i was younger and it still has many good qualities for me today i can still chat and have fun on here like i was when i used to go on here! awesome place always highly recommend it!</span>
+      </p>
+    </article>
+        <article>
+      <h3>michael</h3>
+      <p>
+        <span class='photo' data-src='thumbs/e82d8113f11ec612e8f2fd5fb608714826380b43.thumb.jpg'></span>
+        <span>This chat is a great place to come to meet new people or just pass time when your bored. Definitely the best free chat rooms on the web!</span>
+      </p>
+    </article>
+        <article>
+      <h3>David</h3>
+      <p>
+        <span class='photo' data-src='thumbs/4b7f5687df4d40f3ea10aae18e88a83fb5122916.thumb.jpg'></span>
+        <span>This place Rawks ^^ XD
+All the new rooms are great much betta than the old one. 
+Ive met tons of new people and made tons of new friends !!!
+Tis legend Boy aint i sad? ya but i keep comin here tis truly great Lmao</span>
+      </p>
+    </article>
+        <article>
+      <h3>josh</h3>
+      <p>
+        <span class='photo' data-src='thumbs/daa58fb9ed40c74695a596a281948d7288f08e1f.thumb.jpg'></span>
+        <span>I like it teen chat because they are a lot of cool people to talk to.</span>
+      </p>
+    </article>
+        <article>
+      <h3>john</h3>
+      <p>
+        <span class='photo' data-src='thumbs/7c730ef8429740c864330d8473b9a7b7c4baebe2.thumb.jpg'></span>
+        <span>teenchat is a really kul place. There are tons of kul ppl on here. but some ppl can be a little mean. And there r alot of hot girls on here that has msn. I have been going to teenchat for about a month now and i think its really kul. </span>
+      </p>
+    </article>
+        <article>
+      <h3>Evie</h3>
+      <p>
+        <span class='photo' data-src='thumbs/668e602e3da28b34a12bf80eb30694d72932afee.thumb.jpg'></span>
+        <span>Tenn Chat is awesome I&#39;ve been one this site for 2 weeks and i have met a guy in the chat rooms who is just brilliant so thanks teen chat for getting me in to your site.
+I think everyone should go on teen chat even just for the fun of it it&#39;s a great way to meet new people. xx</span>
+      </p>
+    </article>
+        <article>
+      <h3>Jordan</h3>
+      <p>
+        <span class='photo' data-src='thumbs/e915adf9d0c3aa00b725fd96fdfaece8acb53226.thumb.jpg'></span>
+        <span>Teen chat is off the chain...I&#39;m always meeting new people everyday on these chat rooms. It&#39;s hella fun and never boring!!</span>
+      </p>
+    </article>
+        <article>
+      <h3>Blue</h3>
+      <p>
+        <span class='photo' data-src='thumbs/16853ebb1758d05d14221f0bfb89c627ee2aba50.thumb.jpg'></span>
+        <span>Once you go to Teenchat, and you actually meet cool people, then it WILL become an everyday thing. People can be rude, but that&#39;s not very often. Very addictive, and many people love to chat.</span>
+      </p>
+    </article>
+    
+  </section>
+</div>
+<div id='footer'>
+  <ul>
+    <li><a href="index.html">Login</a></li>
+    <li><a href="other/teen-links/index.html">Teen Links</a></li>
+    <li><a href="other/about-us/index.html">About</a></li>
+    <li><a href="other/privacy-policy/index.html">Privacy Policy</a></li>
+    <li><a href="other/terms-of-service/index.html">Terms of Service</a></li>
+    <li><a href="other/contact-us/index.html">Contact</a></li>
+  </ul>
+</div>
+<div class='checker' id='text_checker'></div>
+<div class='hidden' id='ping_url'></div>
+<div id='swfContainer'></div>
+<!-- / templates -->
+<!-- / not using this in public posts.. -->
+<script id='tpl-chatlog' type='text/template'>
+  <li>
+    <h4><%= name %></h4>
+    <p><%= post %></p>
+    <div class='time'><%= time %></div>
+  </li>
+</script>
+<script id='tpl-log' type='text/template'>
+  <li>
+    <h4><%= name %></h4>
+    <p><%= post %></p>
+    <div class='time'><%= time %></div>
+  </li>
+</script>
+<script id='tpl-log-mention' type='text/template'>
+  <b class="mention <%= classNames %>"><%= username %></b>
+</script>
+<script id='tpl-log-mention-king' type='text/template'>
+  <b class='mention king'><%= username %></b>
+</script>
+<script id='tpl-karma-boost-item' type='text/template'>
+  <div class='reward'>
+    <h4 class='title'><%= name %></h4>
+    <div class='karma reward'><%= karma %></div>
+    <div class='description'>
+      <p class='message'><%= description %></p>
+      <div class='cta'>
+        <div class='accept button'><%= action %></div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id='tpl-user' type='text/template'>
+  <li class='user'>
+    <i class='icon'></i>
+    <span class='username'><%= name %></span>
+    <span class='karma meter'></span>
+  </li>
+</script>
+<script id='tpl-user-category' type='text/template'>
+  <li>
+    <h4 class='title'><%= username %></h4>
+  </li>
+</script>
+<script id='tpl-chat-room' type='text/template'>
+  <div class='chatroom'>
+    <h2>
+      <%= name %>
+      <span class='side info'>
+        <label>
+          <span class='share-link'>Share</span>
+          <input class='url-field' />
+        </label>
+      </span>
+    </h2>
+    <div class='closed message'>
+      <div class='message'>...</div>
+    </div>
+    <div class='karma_raffle hidden'>
+      <div class='icon'></div>
+      <div class='title'></div>
+    </div>
+    <div class='log-container'>
+      <div class='room'>
+        <div class='logs nano'>
+          <ul class='content'></ul>
+        </div>
+      </div>
+      <div class='growl_notifications'>
+        <ul></ul>
+      </div>
+    </div>
+    <div class='users nano'>
+      <div class='content'>
+        <div class='edit button hidden'>Edit Room</div>
+        <div class='council-users'>
+          <h4>The Council</h4>
+          <ul class='list-users'></ul>
+        </div>
+        <div class='default-users'>
+          <h4>The Chatters</h4>
+          <ul class='list-users'></ul>
+        </div>
+      </div>
+    </div>
+    <div class='input'>
+      <textarea class='autoexpand'></textarea>
+    </div>
+  </div>
+</script>
+<script id='tpl-subscribed-room' type='text/template'>
+  <li>
+    <h4>
+      <%= name  %>
+    </h4>
+    <div class='notification'>...</div>
+    <div class='close button leave'></div>
+  </li>
+</script>
+<script id='tpl-available-room' type='text/template'>
+  <li>
+    <h4>
+      <%= name %>
+      <span class='totalusers'>(<%= totalUsers %>)</span>
+    </h4>
+    <div class='check button'></div>
+  </li>
+</script>
+<script id='tpl-mod-commands' type='text/template'>
+  <div class='mod_options'>
+    <div class='kick action'>
+      <span class='label'>Kick</span>
+      <span class='icon'></span>
+    </div>
+    <div class='assign_mod action'>
+      <span class='label'>Assign as Mod</span>
+      <span class='icon'></span>
+    </div>
+  </div>
+</script>
+<script id='tpl-private-chat' type='text/template'>
+  <div class='privatechat'>
+    <h2>
+      <span class='name'><%= name %></span>
+      <span class='gender'><%= gender %></span>
+      <span class='age'><%= age %></span>
+      <span class='karma'><%= karma %></span>
+    </h2>
+    <ul class='user-actions'>
+      <li class='invite'><span class='icon'></span><span class='label'>Invite</span></li>
+      <li class='ignore'><span class='icon'></span><span class='label'>Ignore</span></li>
+      <li class='report'><span class='icon'></span><span class='label'>Flag</span></li>
+    </ul>
+    <div class='logs nano'>
+      <ul class='content'></ul>
+    </div>
+    <div class='input'>
+      <textarea class='autoexpand'></textarea>
+    </div>
+  </div>
+</script>
+<script id='tpl-private-user' type='text/template'>
+  <li>
+    <h4>
+      <span class='name'><%= name %></span>
+      <span class='gender'><%= gender %></span>
+      <span class='age'><%= age %></span>
+      <span class='karma'><%= karma %></span>
+    </h4>
+    <div class='notification'>...</div>
+    <div class='message'></div>
+    <div class='close button'></div>
+  </li>
+</script>
+<script id='tpl-growl' type='text/template'>
+  <li>
+    <div class='growl_icon'></div>
+    <div class='close button'></div>
+    <p><%= message %></p>
+    <div class='time'></div>
+  </li>
+</script>
+<script id='tpl-invite-room' type='text/template'>
+  <li>
+    <span class='checkbox'></span>
+    <span class='room-name'><%= name %></span>
+    <span class='room-id'>/<%= url %></span>
+  </li>
+</script>
+<script id='tpl-flashsocket' type='text/template'>
+  <embed allowscriptaccess='always' height='1' id='swfsocket' name='swfsocket' src='SWFURL' type='application/x-shockwave-flash' width='1'></embed>
+</script>
+<script id='tpl-flashsocket-ie' type='text/template'>
+  <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="1" height="1" id="swfsocket">
+  <param name="allowScriptAccess" value="always" />
+  <param name="movie" value="SWFURL" />
+  <param name="quality" value="high" />
+  <param name="bgcolor" value="#ffcc00" />
+  <embed src="SWFURL" quality="high" bgcolor="#ffcc00" width="1" height="1" name="swfsocket" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+  </object>
+</script>
+<script id='tpl-flashsocket-ie8' type='text/template'>
+  <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="1" height="1" id="swfsocket">
+  <param name="allowScriptAccess" value="always" />
+  <param name="movie" value="SWFURL" />
+  </object>
+</script>
+<script id='tpl-e-room' type='text/template'>
+  <input type='text'>.name</input>
+  <input type='text'>.url</input>
+</script>
+<script id='tpl-notify-private' type='text/template'>
+  <li>
+    <span class='name'><%= name %></span>
+    <span class='message'><%= post %></span>
+  </li>
+</script>
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27177967-1']);
+      _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+
+
+
+
+<script type='text/javascript'>
+//<![CDATA[
+(function(a,b,c){var d,e=a.getElementsByTagName(b)[0];if(a.getElementById(c))return;d=a.createElement(b),d.id=c,d.src="../connect.facebook.net/en_US/all.js#xfbml=1",e.parentNode.insertBefore(d,e)})(document,"script","facebook-jssdk")
+//]]>
+</script>
+
+<script type='text/javascript'>
+//<![CDATA[
+(function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="../apis.google.com/js/plusone.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()
+//]]>
+</script>
+
+    <script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27177967-1']);
+      _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript" data-site-id="zobe" data-key="zobe_id">
+(function() {
+    var script = document.createElement('script');
+    script.src = '../bert.activechecker.com/check.js';
+    script.async=true;
+    var entry = document.getElementsByTagName('script')[0];
+    entry.parentNode.insertBefore(script, entry);
+})();
+</script>
+
+
+
+  </body>
+
+<!-- Mirrored from www.zobe.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Apr 2018 21:20:58 GMT -->
+</html>
